@@ -5,6 +5,7 @@ import 'package:greengrocer/src/config/custom_colors.dart';
 // ignore: library_prefixes
 import '../../config/app_data.dart' as appData;
 import 'components/category_tile.dart';
+import 'components/item_tile.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -134,48 +135,8 @@ class _HomeTabState extends State<HomeTab> {
               ),
               itemCount: appData.items.length,
               itemBuilder: (gridContext, index) {
-                return Stack(
-                  children: [
-                    Container(
-                      width: MediaQuery.of(gridContext).size.width,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                          image: AssetImage(
-                            appData.items[index].imgUrl,
-                          ),
-                        ),
-                      ),
-                      child: Column(
-                        children: const [
-                          Spacer(),
-                          Text('Maçã'),
-                          Text('R\$ 10,00'),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      right: 0,
-                      top: 0,
-                      child: Container(
-                        width: 30,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: CustomColors.customSwatchColor,
-                          borderRadius: const BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.add_shopping_cart_outlined,
-                          size: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                  ],
+                return ItemTile(
+                  item: appData.items[index],
                 );
               },
             ),
