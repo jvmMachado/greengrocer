@@ -5,12 +5,14 @@ class QuantityWidget extends StatelessWidget {
   final int value;
   final String unit;
   final Function(int quantity) result;
+  final bool isCheckout;
 
   const QuantityWidget({
     Key? key,
     required this.value,
     required this.unit,
     required this.result,
+    this.isCheckout = false,
   }) : super(key: key);
 
   @override
@@ -29,12 +31,16 @@ class QuantityWidget extends StatelessWidget {
         ],
       ),
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           _QuantityButton(
-            icon: Icons.remove,
-            color: Colors.grey,
+            icon:
+                isCheckout && value == 1 ? Icons.delete_forever : Icons.remove,
+            color: isCheckout && value == 1
+                ? CustomColors.customContrastColor
+                : Colors.grey,
             onPressed: () {
-              if (value == 1) return;
+              if (value == 1 && isCheckout == false) return;
               result(value - 1);
             },
           ),
