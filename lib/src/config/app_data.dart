@@ -1,4 +1,5 @@
 import '../models/item_model.dart';
+import '../models/user_model.dart';
 
 ItemModel apple = ItemModel(
   description:
@@ -71,3 +72,10 @@ List<String> categories = [
   'Temperos',
   'Cereais',
 ];
+
+UserModel user = UserModel(
+    name: 'João',
+    phone: '22999999999',
+    cpf: '12345678901',
+    email: 'joaovmmachado@gmail.com',
+    password: 'strongpassword123');
